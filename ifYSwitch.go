@@ -24,4 +24,5 @@ func main() {
 	default:
 		fmt.Println("Y lavate las manos :)")
 	}
+
 }
