@@ -17,11 +17,8 @@ type Edades struct {
 }
 
 func otros() {
-	nuevaConexionDB()
-	catalogoID("catalogo_familia", "Computadoras")
-	resultadosQuery("catalogo_familia")
-	/*var i int = 25
-	var a, h, j float32 = 64.23, 59.21, 37.201*/
+	var i int = 25
+	var a, h, j float32 = 64.23, 59.21, 37.201
 
 	/*	estado := "soltera"
 
@@ -37,7 +34,7 @@ func otros() {
 
 		fmt.Println(sumTotal)*/
 	//ciclos()
-	//ejemploMaps()
+	ejemploMaps()
 }
 
 /*
@@ -45,11 +42,12 @@ func suma(a, s int) (bool, int) {
 	return a+s < 100, a + s
 }*/
 
-func Ciclos() {
-	var edad Edades
-	edad.Año = 1996
-	edad.Mes = 12
-	edad.Dia = 25
+func ciclos() {
+	var edad = Edades{
+		Año: 1996,
+		Mes: 12,
+		Dia: 25,
+	}
 
 	var slice []Edades
 
@@ -61,19 +59,22 @@ func Ciclos() {
 
 	slice = append(slice, edad)
 	fmt.Println(slice)
-	/*var arreglo [10]string
+	var arreglo = [10]int{10, 9, 8, 7, 6, 5, 4, 3, 2, 1}
 
+	fmt.Print("Esto es un 'for':")
 	for i := 0; i < len(arreglo); i++ { //Ciclo for
 		fmt.Println(arreglo[i])
 	}
-	i := 0
-	for i < len(arreglo) { //Ciclo while
-		fmt.Println(arreglo[i])
+	fmt.Print("Esto es un 'while':")
+	j := 0
+	for j < len(arreglo) { //Ciclo while
+		fmt.Println(arreglo[j])
 	}
 
+	fmt.Print("Esto es un 'range':")
 	for i, valores := range arreglo { //ciclo range
 		fmt.Println(i, valores)
-	}*/
+	}
 }
 
 func ejemploMaps() {

@@ -31,7 +31,8 @@ func separador() {
 }
 
 func nuevaConexionDB() {
-	db, err = sql.Open("mysql", string("root:Int0603239I7!@tcp(127.0.0.1:3306)/CompuSi"))
+	//usuario:contraseña@tcp(direccion:puerto)/nombreBase
+	db, err = sql.Open("mysql", string("root:*****@tcp(127.0.0.1:3306)/****"))
 	revisarError(err)
 
 	err = db.Ping()
