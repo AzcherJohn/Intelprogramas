@@ -115,3 +115,7 @@ func revisarError(err error) {
 		panic(err)
 	}
 }
+
+func cerrarBD() {
+	defer db.Close()
+}
