@@ -16,7 +16,22 @@ type Tablas struct {
 	Nombre, Tipo string
 }
 
+type Frutas struct {
+	Descripcion, Precio string
+}
+
+type CatalogoBD struct {
+	Id, Descripcion, Precio string
+}
+
+const tablaFruta = "catalogo_frutas"
+
 func main() {
+	var fruta []Frutas
+	fruta = append(fruta, Frutas{"manzana", "15"})
+	fruta = append(fruta, Frutas{"pera", "22"})
+	fruta = append(fruta, Frutas{"sandia", "25"})
+
 	conexionBD()
 	tablasBase := mostrarTablasBD()
 
@@ -24,7 +39,10 @@ func main() {
 	for _, tabla := range mostrarTablasBD() {
 		fmt.Println(tabla)
 	}
-
+	for _, datos := range fruta {
+		fmt.Println(insertarDatosCatalgoBD(tablaFruta, "descrip, precio", datos.Descripcion, datos.Precio))
+	}
+	fmt.Println(mostrarTodosDatosBD(tablaFruta))
 	cerrarConexionBD()
 }
 
@@ -61,6 +79,26 @@ func crearTablaBD(tabla []Tablas) {
 		comprobarError(err)
 	}
 
+}
+
+func insertarDatosCatalgoBD(nombreTabla, columnas, valor1, valor2 string) int64 {
+	insertar, err := db.Exec("INSERT INTO "+nombreTabla+" ("+columnas+") VALUES (?, ?)", valor1, valor2)
+	comprobarError(err)
+	status, err := insertar.LastInsertId()
+	return status
+}
+
+func mostrarTodosDatosBD(nombreTabla string) (fruta []CatalogoBD) {
+	mostrar, err := db.Query("SELECT * FROM " + nombreTabla)
+	comprobarError(err)
+	for mostrar.Next() {
+		var id, desc, precio string
+		err = mostrar.Scan(&id, &desc, &precio)
+		comprobarError(err)
+
+		fruta = append(fruta, CatalogoBD{id, desc, precio})
+	}
+	return
 }
 
 func conexionBD() {
