@@ -31,11 +31,11 @@ func regresaValor1() string {
 
 func regresaValor2() (texto string) {
 	texto = "esta funcion regresa un valor desde una variable declarada en la funcion"
-	return texto
+	return
 }
 
 func regresaValores() (suma int, texto string) {
 	suma = 2
 	texto = " valores es lo que retorno está función"
-	return suma, texto
+	return
 }
